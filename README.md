@@ -117,5 +117,3 @@ DEPLOY.md   Deployment notes
 - [`DEPLOY.md`](DEPLOY.md): Vercel plus a free container host, and the gotchas we hit
 - [`docs/DECISIONS.md`](docs/DECISIONS.md) and [`docs/AGENT_CARD.md`](docs/AGENT_CARD.md): design choices and what each agent may and may not do
 - [`backend/README.md`](backend/README.md): backend run guide and live-provider checklist
-
-Built by [@abdul-rafay19](https://github.com/abdul-rafay19) for a hackathon.
