@@ -1,0 +1,10 @@
+frontend/
+docs/
+.git/
+.gitignore
+**/__pycache__/
+**/.venv/
+backend/.env
+backend/*.db*
+backend/data/
+backend/tests/

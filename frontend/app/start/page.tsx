@@ -11,7 +11,7 @@ export default function Start(){
   return(<><TrustStrip/><main className="mx-auto max-w-3xl px-6 py-12">
     <h1 className="text-3xl font-semibold tracking-tight">Start an audit</h1>
     <p className="mt-2 max-w-xl text-mute">Drop supplier PDFs. Agents read them, a rules engine decides, and an auditor checks every quote against the page it came from.</p>
-    {!MOCK&&<p role="status" className="mt-4 text-xs text-mute">Live backend: {live==='ready'?'ready':live==='waking'?'waking up, this can take about a minute…':'checking…'}</p>}
+    {!MOCK&&<p role="status" className="mt-4 text-xs text-mute">Live backend: {live==='ready'?'ready':live==='waking'?'waking up, this can take about a minute…':'checking…'}{live==='waking'&&<> · <a href={`${API}/api/health`} target="_blank" rel="noreferrer" className="text-act underline">Open the backend once to wake it</a></>}</p>}
     <label className="mt-4 flex h-44 cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed border-line bg-card text-sm text-mute transition-colors hover:border-act focus-within:border-act" onDragOver={e=>e.preventDefault()} onDrop={e=>{e.preventDefault();upload(e.dataTransfer.files)}}>
       <span className="font-medium text-ink">{busy?'Uploading…':'Drop PDF, PNG or JPG files here'}</span><span>or click to choose files</span>
       <input type="file" multiple accept=".pdf,.png,.jpg,.jpeg" className="sr-only" onChange={e=>upload(e.target.files)}/></label>
