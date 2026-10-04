@@ -1,0 +1,1550 @@
+{
+ "title": "Failed supplier (SUP-002)",
+ "description": "Chemical limit exceeded (17.4 > 15 ppm) with a corrective-action draft, plus a genuine batch-id inconsistency between documents, both verified and sent to human review.",
+ "workflow": {
+  "id": "wf_0ded520330a7",
+  "status": "AWAITING_REVIEW",
+  "evaluation_number": 1,
+  "provider": "mock",
+  "model": "mock-regex-v1",
+  "rule_set": {
+   "id": "demo_buyer_framework@1.0",
+   "name": "Demo Buyer Framework",
+   "version": "1.0",
+   "content": {
+    "framework": "Demo Buyer Framework",
+    "version": "1.0",
+    "label": "Demo rules. Not the requirements of any real buyer.",
+    "last_reviewed": "2026-10-03",
+    "reference_date": "2026-09-30",
+    "min_extraction_confidence": 0.8,
+    "rules": [
+     {
+      "id": "CHEM_MAX",
+      "title": "Maximum chemical concentration",
+      "type": "numeric_max",
+      "field": "chemical_ppm",
+      "limit": 15.0,
+      "unit": "ppm"
+     },
+     {
+      "id": "CERT_REQUIRED",
+      "title": "Required certification valid on reference date",
+      "type": "required_certification",
+      "value": "DEMO_CERT_CHEM_L2"
+     },
+     {
+      "id": "DOC_FRESH",
+      "title": "Test report not older than 60 days",
+      "type": "date_window",
+      "field": "document_date",
+      "document_types": [
+       "lab_report"
+      ],
+      "max_age_days": 60,
+      "relative_to": "reference_date"
+     },
+     {
+      "id": "ID_CONSISTENCY",
+      "title": "Supplier and batch identity consistent across documents",
+      "type": "consistency",
+      "fields": [
+       "supplier_id",
+       "batch_id"
+      ]
+     }
+    ]
+   },
+   "derived_from": null
+  }
+ },
+ "documents": [
+  {
+   "id": "doc_33bd12a6b094",
+   "original_name": "certificate_SUP-002.pdf",
+   "sha256": "35360cd216e2e197021cc40e6db77ec441a5cf80b103c22b9f7ce21133080dd3",
+   "mime": "application/pdf",
+   "size": 2245,
+   "doc_type": "certificate",
+   "page_count": 1,
+   "status": "extracted",
+   "error": null,
+   "file": "35360cd216e2e197021cc40e6db77ec441a5cf80b103c22b9f7ce21133080dd3.pdf"
+  },
+  {
+   "id": "doc_7832cd798be9",
+   "original_name": "lab_report_BT-2047.pdf",
+   "sha256": "8e9c80f36a573042c66f29461b41a922e1ea7d9179d31077ca3d5581dd3c35ce",
+   "mime": "application/pdf",
+   "size": 3354,
+   "doc_type": "lab_report",
+   "page_count": 2,
+   "status": "extracted",
+   "error": null,
+   "file": "8e9c80f36a573042c66f29461b41a922e1ea7d9179d31077ca3d5581dd3c35ce.pdf"
+  },
+  {
+   "id": "doc_b5846acd962f",
+   "original_name": "supplier_declaration_BT-2041.pdf",
+   "sha256": "902fc7f94c20a120fbc912cb4d30ac8d935369d45d7413c381ccd9d7ac94fdd9",
+   "mime": "application/pdf",
+   "size": 2229,
+   "doc_type": "supplier_declaration",
+   "page_count": 1,
+   "status": "extracted",
+   "error": null,
+   "file": "902fc7f94c20a120fbc912cb4d30ac8d935369d45d7413c381ccd9d7ac94fdd9.pdf"
+  }
+ ],
+ "extractions": {
+  "doc_33bd12a6b094": {
+   "document_id": "doc_33bd12a6b094",
+   "doc_type": "certificate",
+   "supplier_id": {
+    "field": "supplier_id",
+    "value": "SUP-002",
+    "unit": null,
+    "source_document": "certificate_SUP-002.pdf",
+    "document_id": "doc_33bd12a6b094",
+    "page": 1,
+    "quote": "Supplier ID: SUP-002",
+    "confidence": 0.95,
+    "llm_confidence": 0.95,
+    "verification": "exact",
+    "verified": true,
+    "bbox": [
+     40.0,
+     138.18,
+     145.15,
+     153.29
+    ]
+   },
+   "batch_id": null,
+   "document_date": {
+    "field": "document_date",
+    "value": "2026-03-31",
+    "unit": null,
+    "source_document": "certificate_SUP-002.pdf",
+    "document_id": "doc_33bd12a6b094",
+    "page": 1,
+    "quote": "Issue Date: 2026-03-31",
+    "confidence": 0.95,
+    "llm_confidence": 0.95,
+    "verification": "exact",
+    "verified": true,
+    "bbox": [
+     40.0,
+     178.18,
+     154.95,
+     193.29
+    ]
+   },
+   "test_results": [],
+   "certifications": [
+    {
+     "name": {
+      "field": "certification:DEMO_CERT_CHEM_L2",
+      "value": "DEMO_CERT_CHEM_L2",
+      "unit": null,
+      "source_document": "certificate_SUP-002.pdf",
+      "document_id": "doc_33bd12a6b094",
+      "page": 1,
+      "quote": "Certification: DEMO_CERT_CHEM_L2",
+      "confidence": 0.95,
+      "llm_confidence": 0.95,
+      "verification": "exact",
+      "verified": true,
+      "bbox": [
+       40.0,
+       158.18,
+       230.09,
+       173.29
+      ]
+     },
+     "issued_date": {
+      "field": "issued_date",
+      "value": "2026-03-31",
+      "unit": null,
+      "source_document": "certificate_SUP-002.pdf",
+      "document_id": "doc_33bd12a6b094",
+      "page": 1,
+      "quote": "Issue Date: 2026-03-31",
+      "confidence": 0.95,
+      "llm_confidence": 0.95,
+      "verification": "exact",
+      "verified": true,
+      "bbox": [
+       40.0,
+       178.18,
+       154.95,
+       193.29
+      ]
+     },
+     "valid_until": {
+      "field": "valid_until",
+      "value": "2027-03-31",
+      "unit": null,
+      "source_document": "certificate_SUP-002.pdf",
+      "document_id": "doc_33bd12a6b094",
+      "page": 1,
+      "quote": "Valid Until: 2027-03-31",
+      "confidence": 0.95,
+      "llm_confidence": 0.95,
+      "verification": "exact",
+      "verified": true,
+      "bbox": [
+       40.0,
+       198.18,
+       151.88,
+       213.29
+      ]
+     }
+    }
+   ],
+   "other": [],
+   "extraction_notes": [],
+   "provider": "mock",
+   "model": "mock-regex-v1",
+   "extractor_version": "1.0.0",
+   "source_document": "certificate_SUP-002.pdf",
+   "page_count": 1,
+   "image_only_pages": []
+  },
+  "doc_7832cd798be9": {
+   "document_id": "doc_7832cd798be9",
+   "doc_type": "lab_report",
+   "supplier_id": {
+    "field": "supplier_id",
+    "value": "SUP-002",
+    "unit": null,
+    "source_document": "lab_report_BT-2047.pdf",
+    "document_id": "doc_7832cd798be9",
+    "page": 1,
+    "quote": "Supplier ID: SUP-002",
+    "confidence": 0.95,
+    "llm_confidence": 0.95,
+    "verification": "exact",
+    "verified": true,
+    "bbox": [
+     40.0,
+     158.18,
+     145.15,
+     173.29
+    ]
+   },
+   "batch_id": {
+    "field": "batch_id",
+    "value": "BT-2047",
+    "unit": null,
+    "source_document": "lab_report_BT-2047.pdf",
+    "document_id": "doc_7832cd798be9",
+    "page": 2,
+    "quote": "Batch ID: BT-2047",
+    "confidence": 0.95,
+    "llm_confidence": 0.95,
+    "verification": "exact",
+    "verified": true,
+    "bbox": [
+     40.0,
+     138.18,
+     130.49,
+     153.29
+    ]
+   },
+   "document_date": {
+    "field": "document_date",
+    "value": "2026-09-18",
+    "unit": null,
+    "source_document": "lab_report_BT-2047.pdf",
+    "document_id": "doc_7832cd798be9",
+    "page": 1,
+    "quote": "Report Date: 2026-09-18",
+    "confidence": 0.95,
+    "llm_confidence": 0.95,
+    "verification": "exact",
+    "verified": true,
+    "bbox": [
+     40.0,
+     138.18,
+     161.67,
+     153.29
+    ]
+   },
+   "test_results": [
+    {
+     "field": "chemical_ppm",
+     "value": 17.4,
+     "unit": "ppm",
+     "source_document": "lab_report_BT-2047.pdf",
+     "document_id": "doc_7832cd798be9",
+     "page": 2,
+     "quote": "Chemical concentration 17.4 ppm",
+     "confidence": 0.95,
+     "llm_confidence": 0.95,
+     "verification": "normalized",
+     "verified": true,
+     "bbox": [
+      44.0,
+      214.18,
+      405.39,
+      229.29
+     ]
+    }
+   ],
+   "certifications": [],
+   "other": [],
+   "extraction_notes": [],
+   "provider": "mock",
+   "model": "mock-regex-v1",
+   "extractor_version": "1.0.0",
+   "source_document": "lab_report_BT-2047.pdf",
+   "page_count": 2,
+   "image_only_pages": []
+  },
+  "doc_b5846acd962f": {
+   "document_id": "doc_b5846acd962f",
+   "doc_type": "supplier_declaration",
+   "supplier_id": {
+    "field": "supplier_id",
+    "value": "SUP-002",
+    "unit": null,
+    "source_document": "supplier_declaration_BT-2041.pdf",
+    "document_id": "doc_b5846acd962f",
+    "page": 1,
+    "quote": "Supplier ID: SUP-002",
+    "confidence": 0.95,
+    "llm_confidence": 0.95,
+    "verification": "exact",
+    "verified": true,
+    "bbox": [
+     40.0,
+     138.18,
+     145.15,
+     153.29
+    ]
+   },
+   "batch_id": {
+    "field": "batch_id",
+    "value": "BT-2041",
+    "unit": null,
+    "source_document": "supplier_declaration_BT-2041.pdf",
+    "document_id": "doc_b5846acd962f",
+    "page": 1,
+    "quote": "Batch ID: BT-2041",
+    "confidence": 0.95,
+    "llm_confidence": 0.95,
+    "verification": "exact",
+    "verified": true,
+    "bbox": [
+     40.0,
+     158.18,
+     130.49,
+     173.29
+    ]
+   },
+   "document_date": {
+    "field": "document_date",
+    "value": "2026-09-21",
+    "unit": null,
+    "source_document": "supplier_declaration_BT-2041.pdf",
+    "document_id": "doc_b5846acd962f",
+    "page": 1,
+    "quote": "Declaration Date: 2026-09-21",
+    "confidence": 0.95,
+    "llm_confidence": 0.95,
+    "verification": "exact",
+    "verified": true,
+    "bbox": [
+     40.0,
+     178.18,
+     184.29,
+     193.29
+    ]
+   },
+   "test_results": [],
+   "certifications": [],
+   "other": [],
+   "extraction_notes": [],
+   "provider": "mock",
+   "model": "mock-regex-v1",
+   "extractor_version": "1.0.0",
+   "source_document": "supplier_declaration_BT-2041.pdf",
+   "page_count": 1,
+   "image_only_pages": []
+  }
+ },
+ "findings": [
+  {
+   "finding_id": "fnd_8353471a71ca",
+   "workflow_id": "wf_0ded520330a7",
+   "evaluation_number": 1,
+   "rule_id": "CHEM_MAX",
+   "rule_title": "Maximum chemical concentration",
+   "compliance_status": "REQUIREMENT_NOT_SATISFIED",
+   "reason": "17.4 ppm exceeds configured maximum of 15 ppm (rule CHEM_MAX, Demo Buyer Framework v1.0)",
+   "escalation_reason": null,
+   "evidence": [
+    {
+     "field": "chemical_ppm",
+     "value": 17.4,
+     "unit": "ppm",
+     "source_document": "lab_report_BT-2047.pdf",
+     "document_id": "doc_7832cd798be9",
+     "page": 2,
+     "quote": "Chemical concentration 17.4 ppm",
+     "confidence": 0.95,
+     "llm_confidence": 0.95,
+     "verification": "normalized",
+     "verified": true,
+     "bbox": [
+      44.0,
+      214.18,
+      405.39,
+      229.29
+     ]
+    }
+   ],
+   "auditor_flags": [],
+   "audit_status": "verified",
+   "requires_human_review": true,
+   "review_decision": null,
+   "corrective_action": {
+    "en": "Hello (SUP-002),\n\nDuring our review of the documents you submitted, we noted the following: 17.4 ppm exceeds configured maximum of 15 ppm (rule CHEM_MAX, Demo Buyer Framework v1.0)\nSource: lab_report_BT-2047.pdf, page 2: \"Chemical concentration 17.4 ppm\"\nThis was assessed against the configured check CHEM_MAX Maximum chemical concentration (Demo Buyer Framework v1.0).\n\nCould you please confirm whether this is correct and, if not, send updated or corrected documents? If there is context we should know about, we are happy to review it.\n\nThank you.",
+    "roman_ur": "Assalam o Alaikum (SUP-002),\n\nAap ke jama karaye gaye documents ke jaiza mein humein yeh baat nazar aayi: 17.4 ppm exceeds configured maximum of 15 ppm (rule CHEM_MAX, Demo Buyer Framework v1.0)\nZariya: lab_report_BT-2047.pdf, page 2: \"Chemical concentration 17.4 ppm\"\nYeh jaiza configured check CHEM_MAX Maximum chemical concentration (Demo Buyer Framework v1.0) ke mutabiq kiya gaya hai.\n\nBarae meharbani tasdeeq karein ke yeh durust hai ya nahin, aur agar nahin to updated ya durust documents bhej dein. Agar koi aisi baat hai jo humein maloom honi chahiye to hum use dekhne ke liye tayyar hain.\n\nShukriya.",
+    "status": "draft",
+    "label": "AI draft. Review before sending."
+   },
+   "superseded": false,
+   "audit_notes": [],
+   "rule_set_label": "Demo Buyer Framework v1.0"
+  },
+  {
+   "finding_id": "fnd_09f4bc9c2b2e",
+   "workflow_id": "wf_0ded520330a7",
+   "evaluation_number": 1,
+   "rule_id": "CERT_REQUIRED",
+   "rule_title": "Required certification valid on reference date",
+   "compliance_status": "PASSING_CONFIGURED_CHECK",
+   "reason": "DEMO_CERT_CHEM_L2 is valid until 2027-03-31, on or after the reference date 2026-09-30 (rule CERT_REQUIRED, Demo Buyer Framework v1.0)",
+   "escalation_reason": null,
+   "evidence": [
+    {
+     "field": "certification:DEMO_CERT_CHEM_L2",
+     "value": "DEMO_CERT_CHEM_L2",
+     "unit": null,
+     "source_document": "certificate_SUP-002.pdf",
+     "document_id": "doc_33bd12a6b094",
+     "page": 1,
+     "quote": "Certification: DEMO_CERT_CHEM_L2",
+     "confidence": 0.95,
+     "llm_confidence": 0.95,
+     "verification": "exact",
+     "verified": true,
+     "bbox": [
+      40.0,
+      158.18,
+      230.09,
+      173.29
+     ]
+    },
+    {
+     "field": "valid_until",
+     "value": "2027-03-31",
+     "unit": null,
+     "source_document": "certificate_SUP-002.pdf",
+     "document_id": "doc_33bd12a6b094",
+     "page": 1,
+     "quote": "Valid Until: 2027-03-31",
+     "confidence": 0.95,
+     "llm_confidence": 0.95,
+     "verification": "exact",
+     "verified": true,
+     "bbox": [
+      40.0,
+      198.18,
+      151.88,
+      213.29
+     ]
+    }
+   ],
+   "auditor_flags": [],
+   "audit_status": "verified",
+   "requires_human_review": false,
+   "review_decision": null,
+   "corrective_action": null,
+   "superseded": false,
+   "audit_notes": [],
+   "rule_set_label": "Demo Buyer Framework v1.0"
+  },
+  {
+   "finding_id": "fnd_9ed93d911388",
+   "workflow_id": "wf_0ded520330a7",
+   "evaluation_number": 1,
+   "rule_id": "DOC_FRESH",
+   "rule_title": "Test report not older than 60 days",
+   "compliance_status": "PASSING_CONFIGURED_CHECK",
+   "reason": "lab_report_BT-2047.pdf is 12 days old, within the configured maximum of 60 days (rule DOC_FRESH, Demo Buyer Framework v1.0)",
+   "escalation_reason": null,
+   "evidence": [
+    {
+     "field": "document_date",
+     "value": "2026-09-18",
+     "unit": null,
+     "source_document": "lab_report_BT-2047.pdf",
+     "document_id": "doc_7832cd798be9",
+     "page": 1,
+     "quote": "Report Date: 2026-09-18",
+     "confidence": 0.95,
+     "llm_confidence": 0.95,
+     "verification": "exact",
+     "verified": true,
+     "bbox": [
+      40.0,
+      138.18,
+      161.67,
+      153.29
+     ]
+    }
+   ],
+   "auditor_flags": [],
+   "audit_status": "verified",
+   "requires_human_review": false,
+   "review_decision": null,
+   "corrective_action": null,
+   "superseded": false,
+   "audit_notes": [],
+   "rule_set_label": "Demo Buyer Framework v1.0"
+  },
+  {
+   "finding_id": "fnd_ed00e0acfb9b",
+   "workflow_id": "wf_0ded520330a7",
+   "evaluation_number": 1,
+   "rule_id": "ID_CONSISTENCY",
+   "rule_title": "Supplier and batch identity consistent across documents",
+   "compliance_status": "HUMAN_REVIEW_REQUIRED",
+   "reason": "Potential inconsistency requiring human review: batch_id differs across documents (lab_report_BT-2047.pdf: BT-2047, supplier_declaration_BT-2041.pdf: BT-2041) (rule ID_CONSISTENCY, Demo Buyer Framework v1.0)",
+   "escalation_reason": "CONFLICTING_VALUES",
+   "evidence": [
+    {
+     "field": "batch_id",
+     "value": "BT-2047",
+     "unit": null,
+     "source_document": "lab_report_BT-2047.pdf",
+     "document_id": "doc_7832cd798be9",
+     "page": 2,
+     "quote": "Batch ID: BT-2047",
+     "confidence": 0.95,
+     "llm_confidence": 0.95,
+     "verification": "exact",
+     "verified": true,
+     "bbox": [
+      40.0,
+      138.18,
+      130.49,
+      153.29
+     ]
+    },
+    {
+     "field": "batch_id",
+     "value": "BT-2041",
+     "unit": null,
+     "source_document": "supplier_declaration_BT-2041.pdf",
+     "document_id": "doc_b5846acd962f",
+     "page": 1,
+     "quote": "Batch ID: BT-2041",
+     "confidence": 0.95,
+     "llm_confidence": 0.95,
+     "verification": "exact",
+     "verified": true,
+     "bbox": [
+      40.0,
+      158.18,
+      130.49,
+      173.29
+     ]
+    }
+   ],
+   "auditor_flags": [
+    "BATCH_ID_CONFLICT"
+   ],
+   "audit_status": "verified",
+   "requires_human_review": true,
+   "review_decision": null,
+   "corrective_action": {
+    "en": "Hello (SUP-002),\n\nDuring our review of the documents you submitted, we noted the following: Potential inconsistency requiring human review: batch_id differs across documents (lab_report_BT-2047.pdf: BT-2047, supplier_declaration_BT-2041.pdf: BT-2041) (rule ID_CONSISTENCY, Demo Buyer Framework v1.0)\nSource: lab_report_BT-2047.pdf, page 2: \"Batch ID: BT-2047\"; supplier_declaration_BT-2041.pdf, page 1: \"Batch ID: BT-2041\"\nThis was assessed against the configured check ID_CONSISTENCY Supplier and batch identity consistent across documents (Demo Buyer Framework v1.0).\n\nCould you please confirm whether this is correct and, if not, send updated or corrected documents? If there is context we should know about, we are happy to review it.\n\nThank you.",
+    "roman_ur": "Assalam o Alaikum (SUP-002),\n\nAap ke jama karaye gaye documents ke jaiza mein humein yeh baat nazar aayi: Potential inconsistency requiring human review: batch_id differs across documents (lab_report_BT-2047.pdf: BT-2047, supplier_declaration_BT-2041.pdf: BT-2041) (rule ID_CONSISTENCY, Demo Buyer Framework v1.0)\nZariya: lab_report_BT-2047.pdf, page 2: \"Batch ID: BT-2047\"; supplier_declaration_BT-2041.pdf, page 1: \"Batch ID: BT-2041\"\nYeh jaiza configured check ID_CONSISTENCY Supplier and batch identity consistent across documents (Demo Buyer Framework v1.0) ke mutabiq kiya gaya hai.\n\nBarae meharbani tasdeeq karein ke yeh durust hai ya nahin, aur agar nahin to updated ya durust documents bhej dein. Agar koi aisi baat hai jo humein maloom honi chahiye to hum use dekhne ke liye tayyar hain.\n\nShukriya.",
+    "status": "draft",
+    "label": "AI draft. Review before sending."
+   },
+   "superseded": false,
+   "audit_notes": [
+    "Both sources were re-read and verified; this is a genuine inconsistency between documents. No re-extraction attempted."
+   ],
+   "rule_set_label": "Demo Buyer Framework v1.0"
+  }
+ ],
+ "events": [
+  {
+   "type": "WORKFLOW_CREATED",
+   "agent": "orchestrator",
+   "message": "Workflow created with Demo Buyer Framework v1.0",
+   "finding_id": null,
+   "document_id": null,
+   "data": {
+    "rule_set_id": "demo_buyer_framework@1.0",
+    "rule_set": "Demo Buyer Framework v1.0",
+    "rule_set_label": "Demo rules. Not the requirements of any real buyer.",
+    "provider": "mock",
+    "model": "mock-regex-v1",
+    "mock": true,
+    "labels": [
+     "Synthetic Demo Data",
+     "Demo Buyer Framework"
+    ],
+    "document_count": 3
+   }
+  },
+  {
+   "type": "DOCUMENT_RECEIVED",
+   "agent": "orchestrator",
+   "message": "Received certificate_SUP-002.pdf",
+   "finding_id": null,
+   "document_id": "doc_33bd12a6b094",
+   "data": {
+    "document": "certificate_SUP-002.pdf",
+    "sha256": "35360cd216e2e197021cc40e6db77ec441a5cf80b103c22b9f7ce21133080dd3",
+    "size": 2245,
+    "mime": "application/pdf"
+   }
+  },
+  {
+   "type": "DOCUMENT_RECEIVED",
+   "agent": "orchestrator",
+   "message": "Received lab_report_BT-2047.pdf",
+   "finding_id": null,
+   "document_id": "doc_7832cd798be9",
+   "data": {
+    "document": "lab_report_BT-2047.pdf",
+    "sha256": "8e9c80f36a573042c66f29461b41a922e1ea7d9179d31077ca3d5581dd3c35ce",
+    "size": 3354,
+    "mime": "application/pdf"
+   }
+  },
+  {
+   "type": "DOCUMENT_RECEIVED",
+   "agent": "orchestrator",
+   "message": "Received supplier_declaration_BT-2041.pdf",
+   "finding_id": null,
+   "document_id": "doc_b5846acd962f",
+   "data": {
+    "document": "supplier_declaration_BT-2041.pdf",
+    "sha256": "902fc7f94c20a120fbc912cb4d30ac8d935369d45d7413c381ccd9d7ac94fdd9",
+    "size": 2229,
+    "mime": "application/pdf"
+   }
+  },
+  {
+   "type": "EXTRACTION_STARTED",
+   "agent": "extractor",
+   "message": "Reading certificate_SUP-002.pdf",
+   "finding_id": null,
+   "document_id": "doc_33bd12a6b094",
+   "data": {
+    "document": "certificate_SUP-002.pdf"
+   }
+  },
+  {
+   "type": "EXTRACTION_STARTED",
+   "agent": "extractor",
+   "message": "Reading lab_report_BT-2047.pdf",
+   "finding_id": null,
+   "document_id": "doc_7832cd798be9",
+   "data": {
+    "document": "lab_report_BT-2047.pdf"
+   }
+  },
+  {
+   "type": "EXTRACTION_STARTED",
+   "agent": "extractor",
+   "message": "Reading supplier_declaration_BT-2041.pdf",
+   "finding_id": null,
+   "document_id": "doc_b5846acd962f",
+   "data": {
+    "document": "supplier_declaration_BT-2041.pdf"
+   }
+  },
+  {
+   "type": "EXTRACTION_COMPLETED",
+   "agent": "extractor",
+   "message": "Extracted 5 field(s) from certificate_SUP-002.pdf",
+   "finding_id": null,
+   "document_id": "doc_33bd12a6b094",
+   "data": {
+    "document": "certificate_SUP-002.pdf",
+    "doc_type": "certificate",
+    "classified_by": "page_keywords",
+    "field_count": 5,
+    "cached": false,
+    "provider": "mock",
+    "model": "mock-regex-v1",
+    "pages": 1,
+    "image_only_pages": [],
+    "possible_prompt_injection": false
+   }
+  },
+  {
+   "type": "EXTRACTION_COMPLETED",
+   "agent": "extractor",
+   "message": "Extracted 3 field(s) from supplier_declaration_BT-2041.pdf",
+   "finding_id": null,
+   "document_id": "doc_b5846acd962f",
+   "data": {
+    "document": "supplier_declaration_BT-2041.pdf",
+    "doc_type": "supplier_declaration",
+    "classified_by": "page_keywords",
+    "field_count": 3,
+    "cached": false,
+    "provider": "mock",
+    "model": "mock-regex-v1",
+    "pages": 1,
+    "image_only_pages": [],
+    "possible_prompt_injection": false
+   }
+  },
+  {
+   "type": "EXTRACTION_COMPLETED",
+   "agent": "extractor",
+   "message": "Extracted 4 field(s) from lab_report_BT-2047.pdf",
+   "finding_id": null,
+   "document_id": "doc_7832cd798be9",
+   "data": {
+    "document": "lab_report_BT-2047.pdf",
+    "doc_type": "lab_report",
+    "classified_by": "page_keywords",
+    "field_count": 4,
+    "cached": false,
+    "provider": "mock",
+    "model": "mock-regex-v1",
+    "pages": 2,
+    "image_only_pages": [],
+    "possible_prompt_injection": false
+   }
+  },
+  {
+   "type": "COMPLIANCE_CHECK_STARTED",
+   "agent": "compliance",
+   "message": "Evaluating Demo Buyer Framework v1.0 (reference date 2026-09-30) against 3 document(s)",
+   "finding_id": null,
+   "document_id": null,
+   "data": {
+    "evaluation_number": 1,
+    "rule_set": "Demo Buyer Framework v1.0",
+    "rule_count": 4,
+    "reference_date": "2026-09-30"
+   }
+  },
+  {
+   "type": "FINDING_CREATED",
+   "agent": "compliance",
+   "message": "CHEM_MAX: REQUIREMENT_NOT_SATISFIED",
+   "finding_id": "fnd_8353471a71ca",
+   "document_id": null,
+   "data": {
+    "rule_id": "CHEM_MAX",
+    "rule_title": "Maximum chemical concentration",
+    "compliance_status": "REQUIREMENT_NOT_SATISFIED",
+    "escalation_reason": null,
+    "reason": "17.4 ppm exceeds configured maximum of 15 ppm (rule CHEM_MAX, Demo Buyer Framework v1.0)",
+    "evaluation_number": 1
+   }
+  },
+  {
+   "type": "FINDING_CREATED",
+   "agent": "compliance",
+   "message": "CERT_REQUIRED: PASSING_CONFIGURED_CHECK",
+   "finding_id": "fnd_09f4bc9c2b2e",
+   "document_id": null,
+   "data": {
+    "rule_id": "CERT_REQUIRED",
+    "rule_title": "Required certification valid on reference date",
+    "compliance_status": "PASSING_CONFIGURED_CHECK",
+    "escalation_reason": null,
+    "reason": "DEMO_CERT_CHEM_L2 is valid until 2027-03-31, on or after the reference date 2026-09-30 (rule CERT_REQUIRED, Demo Buyer Framework v1.0)",
+    "evaluation_number": 1
+   }
+  },
+  {
+   "type": "FINDING_CREATED",
+   "agent": "compliance",
+   "message": "DOC_FRESH: PASSING_CONFIGURED_CHECK",
+   "finding_id": "fnd_9ed93d911388",
+   "document_id": null,
+   "data": {
+    "rule_id": "DOC_FRESH",
+    "rule_title": "Test report not older than 60 days",
+    "compliance_status": "PASSING_CONFIGURED_CHECK",
+    "escalation_reason": null,
+    "reason": "lab_report_BT-2047.pdf is 12 days old, within the configured maximum of 60 days (rule DOC_FRESH, Demo Buyer Framework v1.0)",
+    "evaluation_number": 1
+   }
+  },
+  {
+   "type": "FINDING_CREATED",
+   "agent": "compliance",
+   "message": "ID_CONSISTENCY: HUMAN_REVIEW_REQUIRED",
+   "finding_id": "fnd_ed00e0acfb9b",
+   "document_id": null,
+   "data": {
+    "rule_id": "ID_CONSISTENCY",
+    "rule_title": "Supplier and batch identity consistent across documents",
+    "compliance_status": "HUMAN_REVIEW_REQUIRED",
+    "escalation_reason": "CONFLICTING_VALUES",
+    "reason": "Potential inconsistency requiring human review: batch_id differs across documents (lab_report_BT-2047.pdf: BT-2047, supplier_declaration_BT-2041.pdf: BT-2041) (rule ID_CONSISTENCY, Demo Buyer Framework v1.0)",
+    "evaluation_number": 1
+   }
+  },
+  {
+   "type": "AUDIT_STARTED",
+   "agent": "auditor",
+   "message": "Auditor challenging 4 finding(s) across 3 document(s)",
+   "finding_id": null,
+   "document_id": null,
+   "data": {
+    "findings": 4,
+    "documents": 3,
+    "reextraction_allowed": true
+   }
+  },
+  {
+   "type": "AUDIT_CHECK_RESULT",
+   "agent": "auditor",
+   "message": "supplier_id in certificate_SUP-002.pdf: verified",
+   "finding_id": null,
+   "document_id": "doc_33bd12a6b094",
+   "data": {
+    "check": "evidence",
+    "field": "supplier_id",
+    "ref": "supplier_id",
+    "passed": true,
+    "verification": "exact",
+    "confidence": 0.95,
+    "page": 1,
+    "value": "SUP-002",
+    "quote": "Supplier ID: SUP-002",
+    "bbox": [
+     40.0,
+     138.18,
+     145.15,
+     153.29
+    ],
+    "flags": [],
+    "checks": [
+     {
+      "name": "source_presence",
+      "passed": true,
+      "detail": "document certificate_SUP-002.pdf, page 1"
+     },
+     {
+      "name": "quote_in_source",
+      "passed": true,
+      "detail": "exact match on page 1"
+     },
+     {
+      "name": "value_in_quote",
+      "passed": true,
+      "detail": "extracted value appears in the quote"
+     }
+    ],
+    "document": "certificate_SUP-002.pdf"
+   }
+  },
+  {
+   "type": "AUDIT_CHECK_RESULT",
+   "agent": "auditor",
+   "message": "document_date in certificate_SUP-002.pdf: verified",
+   "finding_id": null,
+   "document_id": "doc_33bd12a6b094",
+   "data": {
+    "check": "evidence",
+    "field": "document_date",
+    "ref": "document_date",
+    "passed": true,
+    "verification": "exact",
+    "confidence": 0.95,
+    "page": 1,
+    "value": "2026-03-31",
+    "quote": "Issue Date: 2026-03-31",
+    "bbox": [
+     40.0,
+     178.18,
+     154.95,
+     193.29
+    ],
+    "flags": [],
+    "checks": [
+     {
+      "name": "source_presence",
+      "passed": true,
+      "detail": "document certificate_SUP-002.pdf, page 1"
+     },
+     {
+      "name": "quote_in_source",
+      "passed": true,
+      "detail": "exact match on page 1"
+     },
+     {
+      "name": "value_in_quote",
+      "passed": true,
+      "detail": "extracted value appears in the quote"
+     }
+    ],
+    "document": "certificate_SUP-002.pdf"
+   }
+  },
+  {
+   "type": "AUDIT_CHECK_RESULT",
+   "agent": "auditor",
+   "message": "certification:DEMO_CERT_CHEM_L2 in certificate_SUP-002.pdf: verified",
+   "finding_id": null,
+   "document_id": "doc_33bd12a6b094",
+   "data": {
+    "check": "evidence",
+    "field": "certification:DEMO_CERT_CHEM_L2",
+    "ref": "cert:0:name",
+    "passed": true,
+    "verification": "exact",
+    "confidence": 0.95,
+    "page": 1,
+    "value": "DEMO_CERT_CHEM_L2",
+    "quote": "Certification: DEMO_CERT_CHEM_L2",
+    "bbox": [
+     40.0,
+     158.18,
+     230.09,
+     173.29
+    ],
+    "flags": [],
+    "checks": [
+     {
+      "name": "source_presence",
+      "passed": true,
+      "detail": "document certificate_SUP-002.pdf, page 1"
+     },
+     {
+      "name": "quote_in_source",
+      "passed": true,
+      "detail": "exact match on page 1"
+     },
+     {
+      "name": "value_in_quote",
+      "passed": true,
+      "detail": "extracted value appears in the quote"
+     }
+    ],
+    "document": "certificate_SUP-002.pdf"
+   }
+  },
+  {
+   "type": "AUDIT_CHECK_RESULT",
+   "agent": "auditor",
+   "message": "issued_date in certificate_SUP-002.pdf: verified",
+   "finding_id": null,
+   "document_id": "doc_33bd12a6b094",
+   "data": {
+    "check": "evidence",
+    "field": "issued_date",
+    "ref": "cert:0:issued_date",
+    "passed": true,
+    "verification": "exact",
+    "confidence": 0.95,
+    "page": 1,
+    "value": "2026-03-31",
+    "quote": "Issue Date: 2026-03-31",
+    "bbox": [
+     40.0,
+     178.18,
+     154.95,
+     193.29
+    ],
+    "flags": [],
+    "checks": [
+     {
+      "name": "source_presence",
+      "passed": true,
+      "detail": "document certificate_SUP-002.pdf, page 1"
+     },
+     {
+      "name": "quote_in_source",
+      "passed": true,
+      "detail": "exact match on page 1"
+     },
+     {
+      "name": "value_in_quote",
+      "passed": true,
+      "detail": "extracted value appears in the quote"
+     }
+    ],
+    "document": "certificate_SUP-002.pdf"
+   }
+  },
+  {
+   "type": "AUDIT_CHECK_RESULT",
+   "agent": "auditor",
+   "message": "valid_until in certificate_SUP-002.pdf: verified",
+   "finding_id": null,
+   "document_id": "doc_33bd12a6b094",
+   "data": {
+    "check": "evidence",
+    "field": "valid_until",
+    "ref": "cert:0:valid_until",
+    "passed": true,
+    "verification": "exact",
+    "confidence": 0.95,
+    "page": 1,
+    "value": "2027-03-31",
+    "quote": "Valid Until: 2027-03-31",
+    "bbox": [
+     40.0,
+     198.18,
+     151.88,
+     213.29
+    ],
+    "flags": [],
+    "checks": [
+     {
+      "name": "source_presence",
+      "passed": true,
+      "detail": "document certificate_SUP-002.pdf, page 1"
+     },
+     {
+      "name": "quote_in_source",
+      "passed": true,
+      "detail": "exact match on page 1"
+     },
+     {
+      "name": "value_in_quote",
+      "passed": true,
+      "detail": "extracted value appears in the quote"
+     }
+    ],
+    "document": "certificate_SUP-002.pdf"
+   }
+  },
+  {
+   "type": "AUDIT_CHECK_RESULT",
+   "agent": "auditor",
+   "message": "supplier_id in lab_report_BT-2047.pdf: verified",
+   "finding_id": null,
+   "document_id": "doc_7832cd798be9",
+   "data": {
+    "check": "evidence",
+    "field": "supplier_id",
+    "ref": "supplier_id",
+    "passed": true,
+    "verification": "exact",
+    "confidence": 0.95,
+    "page": 1,
+    "value": "SUP-002",
+    "quote": "Supplier ID: SUP-002",
+    "bbox": [
+     40.0,
+     158.18,
+     145.15,
+     173.29
+    ],
+    "flags": [],
+    "checks": [
+     {
+      "name": "source_presence",
+      "passed": true,
+      "detail": "document lab_report_BT-2047.pdf, page 1"
+     },
+     {
+      "name": "quote_in_source",
+      "passed": true,
+      "detail": "exact match on page 1"
+     },
+     {
+      "name": "value_in_quote",
+      "passed": true,
+      "detail": "extracted value appears in the quote"
+     }
+    ],
+    "document": "lab_report_BT-2047.pdf"
+   }
+  },
+  {
+   "type": "AUDIT_CHECK_RESULT",
+   "agent": "auditor",
+   "message": "batch_id in lab_report_BT-2047.pdf: verified",
+   "finding_id": null,
+   "document_id": "doc_7832cd798be9",
+   "data": {
+    "check": "evidence",
+    "field": "batch_id",
+    "ref": "batch_id",
+    "passed": true,
+    "verification": "exact",
+    "confidence": 0.95,
+    "page": 2,
+    "value": "BT-2047",
+    "quote": "Batch ID: BT-2047",
+    "bbox": [
+     40.0,
+     138.18,
+     130.49,
+     153.29
+    ],
+    "flags": [],
+    "checks": [
+     {
+      "name": "source_presence",
+      "passed": true,
+      "detail": "document lab_report_BT-2047.pdf, page 2"
+     },
+     {
+      "name": "quote_in_source",
+      "passed": true,
+      "detail": "exact match on page 2"
+     },
+     {
+      "name": "value_in_quote",
+      "passed": true,
+      "detail": "extracted value appears in the quote"
+     }
+    ],
+    "document": "lab_report_BT-2047.pdf"
+   }
+  },
+  {
+   "type": "AUDIT_CHECK_RESULT",
+   "agent": "auditor",
+   "message": "document_date in lab_report_BT-2047.pdf: verified",
+   "finding_id": null,
+   "document_id": "doc_7832cd798be9",
+   "data": {
+    "check": "evidence",
+    "field": "document_date",
+    "ref": "document_date",
+    "passed": true,
+    "verification": "exact",
+    "confidence": 0.95,
+    "page": 1,
+    "value": "2026-09-18",
+    "quote": "Report Date: 2026-09-18",
+    "bbox": [
+     40.0,
+     138.18,
+     161.67,
+     153.29
+    ],
+    "flags": [],
+    "checks": [
+     {
+      "name": "source_presence",
+      "passed": true,
+      "detail": "document lab_report_BT-2047.pdf, page 1"
+     },
+     {
+      "name": "quote_in_source",
+      "passed": true,
+      "detail": "exact match on page 1"
+     },
+     {
+      "name": "value_in_quote",
+      "passed": true,
+      "detail": "extracted value appears in the quote"
+     }
+    ],
+    "document": "lab_report_BT-2047.pdf"
+   }
+  },
+  {
+   "type": "AUDIT_CHECK_RESULT",
+   "agent": "auditor",
+   "message": "chemical_ppm in lab_report_BT-2047.pdf: verified",
+   "finding_id": null,
+   "document_id": "doc_7832cd798be9",
+   "data": {
+    "check": "evidence",
+    "field": "chemical_ppm",
+    "ref": "test:0",
+    "passed": true,
+    "verification": "normalized",
+    "confidence": 0.95,
+    "page": 2,
+    "value": 17.4,
+    "quote": "Chemical concentration 17.4 ppm",
+    "bbox": [
+     44.0,
+     214.18,
+     405.39,
+     229.29
+    ],
+    "flags": [],
+    "checks": [
+     {
+      "name": "source_presence",
+      "passed": true,
+      "detail": "document lab_report_BT-2047.pdf, page 2"
+     },
+     {
+      "name": "quote_in_source",
+      "passed": true,
+      "detail": "normalized match on page 2"
+     },
+     {
+      "name": "value_in_quote",
+      "passed": true,
+      "detail": "extracted value appears in the quote"
+     }
+    ],
+    "document": "lab_report_BT-2047.pdf"
+   }
+  },
+  {
+   "type": "AUDIT_CHECK_RESULT",
+   "agent": "auditor",
+   "message": "supplier_id in supplier_declaration_BT-2041.pdf: verified",
+   "finding_id": null,
+   "document_id": "doc_b5846acd962f",
+   "data": {
+    "check": "evidence",
+    "field": "supplier_id",
+    "ref": "supplier_id",
+    "passed": true,
+    "verification": "exact",
+    "confidence": 0.95,
+    "page": 1,
+    "value": "SUP-002",
+    "quote": "Supplier ID: SUP-002",
+    "bbox": [
+     40.0,
+     138.18,
+     145.15,
+     153.29
+    ],
+    "flags": [],
+    "checks": [
+     {
+      "name": "source_presence",
+      "passed": true,
+      "detail": "document supplier_declaration_BT-2041.pdf, page 1"
+     },
+     {
+      "name": "quote_in_source",
+      "passed": true,
+      "detail": "exact match on page 1"
+     },
+     {
+      "name": "value_in_quote",
+      "passed": true,
+      "detail": "extracted value appears in the quote"
+     }
+    ],
+    "document": "supplier_declaration_BT-2041.pdf"
+   }
+  },
+  {
+   "type": "AUDIT_CHECK_RESULT",
+   "agent": "auditor",
+   "message": "batch_id in supplier_declaration_BT-2041.pdf: verified",
+   "finding_id": null,
+   "document_id": "doc_b5846acd962f",
+   "data": {
+    "check": "evidence",
+    "field": "batch_id",
+    "ref": "batch_id",
+    "passed": true,
+    "verification": "exact",
+    "confidence": 0.95,
+    "page": 1,
+    "value": "BT-2041",
+    "quote": "Batch ID: BT-2041",
+    "bbox": [
+     40.0,
+     158.18,
+     130.49,
+     173.29
+    ],
+    "flags": [],
+    "checks": [
+     {
+      "name": "source_presence",
+      "passed": true,
+      "detail": "document supplier_declaration_BT-2041.pdf, page 1"
+     },
+     {
+      "name": "quote_in_source",
+      "passed": true,
+      "detail": "exact match on page 1"
+     },
+     {
+      "name": "value_in_quote",
+      "passed": true,
+      "detail": "extracted value appears in the quote"
+     }
+    ],
+    "document": "supplier_declaration_BT-2041.pdf"
+   }
+  },
+  {
+   "type": "AUDIT_CHECK_RESULT",
+   "agent": "auditor",
+   "message": "document_date in supplier_declaration_BT-2041.pdf: verified",
+   "finding_id": null,
+   "document_id": "doc_b5846acd962f",
+   "data": {
+    "check": "evidence",
+    "field": "document_date",
+    "ref": "document_date",
+    "passed": true,
+    "verification": "exact",
+    "confidence": 0.95,
+    "page": 1,
+    "value": "2026-09-21",
+    "quote": "Declaration Date: 2026-09-21",
+    "bbox": [
+     40.0,
+     178.18,
+     184.29,
+     193.29
+    ],
+    "flags": [],
+    "checks": [
+     {
+      "name": "source_presence",
+      "passed": true,
+      "detail": "document supplier_declaration_BT-2041.pdf, page 1"
+     },
+     {
+      "name": "quote_in_source",
+      "passed": true,
+      "detail": "exact match on page 1"
+     },
+     {
+      "name": "value_in_quote",
+      "passed": true,
+      "detail": "extracted value appears in the quote"
+     }
+    ],
+    "document": "supplier_declaration_BT-2041.pdf"
+   }
+  },
+  {
+   "type": "AUDIT_CHECK_RESULT",
+   "agent": "auditor",
+   "message": "supplier_id is consistent across 3 documents",
+   "finding_id": null,
+   "document_id": null,
+   "data": {
+    "check": "cross_document",
+    "field": "supplier_id",
+    "passed": true,
+    "values": [
+     {
+      "document": "certificate_SUP-002.pdf",
+      "document_id": "doc_33bd12a6b094",
+      "value": "SUP-002",
+      "page": 1,
+      "quote": "Supplier ID: SUP-002",
+      "verified": true
+     },
+     {
+      "document": "lab_report_BT-2047.pdf",
+      "document_id": "doc_7832cd798be9",
+      "value": "SUP-002",
+      "page": 1,
+      "quote": "Supplier ID: SUP-002",
+      "verified": true
+     },
+     {
+      "document": "supplier_declaration_BT-2041.pdf",
+      "document_id": "doc_b5846acd962f",
+      "value": "SUP-002",
+      "page": 1,
+      "quote": "Supplier ID: SUP-002",
+      "verified": true
+     }
+    ]
+   }
+  },
+  {
+   "type": "AUDIT_CONFLICT_FOUND",
+   "agent": "auditor",
+   "message": "batch_id differs across documents: lab_report_BT-2047.pdf=BT-2047, supplier_declaration_BT-2041.pdf=BT-2041 (both sources verified; potential inconsistency for human review)",
+   "finding_id": "fnd_ed00e0acfb9b",
+   "document_id": null,
+   "data": {
+    "case": "B",
+    "field": "batch_id",
+    "genuine": true,
+    "values": [
+     {
+      "document": "lab_report_BT-2047.pdf",
+      "document_id": "doc_7832cd798be9",
+      "value": "BT-2047",
+      "page": 2,
+      "quote": "Batch ID: BT-2047",
+      "verified": true
+     },
+     {
+      "document": "supplier_declaration_BT-2041.pdf",
+      "document_id": "doc_b5846acd962f",
+      "value": "BT-2041",
+      "page": 1,
+      "quote": "Batch ID: BT-2041",
+      "verified": true
+     }
+    ],
+    "flag": "BATCH_ID_CONFLICT",
+    "reextraction_attempted": false,
+    "finding_ids": [
+     "fnd_ed00e0acfb9b"
+    ]
+   }
+  },
+  {
+   "type": "AUDIT_CHECK_RESULT",
+   "agent": "auditor",
+   "message": "DEMO_CERT_CHEM_L2 is valid until 2027-03-31 (reference date 2026-09-30)",
+   "finding_id": null,
+   "document_id": "doc_33bd12a6b094",
+   "data": {
+    "check": "certificate_validity",
+    "field": "certification:DEMO_CERT_CHEM_L2",
+    "passed": true,
+    "flag": null,
+    "document": "certificate_SUP-002.pdf"
+   }
+  },
+  {
+   "type": "AUDIT_CHECK_RESULT",
+   "agent": "auditor",
+   "message": "CHEM_MAX: conclusion supported by the quote",
+   "finding_id": "fnd_8353471a71ca",
+   "document_id": null,
+   "data": {
+    "check": "semantic",
+    "passed": true,
+    "rationale": "Mock check: a quote is present.",
+    "concerns": [],
+    "cached": false,
+    "available": true
+   }
+  },
+  {
+   "type": "AUDIT_CHECK_RESULT",
+   "agent": "auditor",
+   "message": "CERT_REQUIRED: conclusion supported by the quote",
+   "finding_id": "fnd_09f4bc9c2b2e",
+   "document_id": null,
+   "data": {
+    "check": "semantic",
+    "passed": true,
+    "rationale": "Mock check: a quote is present.",
+    "concerns": [],
+    "cached": false,
+    "available": true
+   }
+  },
+  {
+   "type": "AUDIT_CHECK_RESULT",
+   "agent": "auditor",
+   "message": "DOC_FRESH: conclusion supported by the quote",
+   "finding_id": "fnd_9ed93d911388",
+   "document_id": null,
+   "data": {
+    "check": "semantic",
+    "passed": true,
+    "rationale": "Mock check: a quote is present.",
+    "concerns": [],
+    "cached": false,
+    "available": true
+   }
+  },
+  {
+   "type": "AUDIT_CHECK_RESULT",
+   "agent": "auditor",
+   "message": "ID_CONSISTENCY: conclusion supported by the quote",
+   "finding_id": "fnd_ed00e0acfb9b",
+   "document_id": null,
+   "data": {
+    "check": "semantic",
+    "passed": true,
+    "rationale": "Mock check: a quote is present.",
+    "concerns": [],
+    "cached": false,
+    "available": true
+   }
+  },
+  {
+   "type": "HUMAN_REVIEW_REQUIRED",
+   "agent": "auditor",
+   "message": "CHEM_MAX needs human review",
+   "finding_id": "fnd_8353471a71ca",
+   "document_id": null,
+   "data": {
+    "rule_id": "CHEM_MAX",
+    "compliance_status": "REQUIREMENT_NOT_SATISFIED",
+    "audit_status": "verified",
+    "escalation_reason": null,
+    "reason": "17.4 ppm exceeds configured maximum of 15 ppm (rule CHEM_MAX, Demo Buyer Framework v1.0)"
+   }
+  },
+  {
+   "type": "HUMAN_REVIEW_REQUIRED",
+   "agent": "auditor",
+   "message": "ID_CONSISTENCY needs human review (CONFLICTING_VALUES)",
+   "finding_id": "fnd_ed00e0acfb9b",
+   "document_id": null,
+   "data": {
+    "rule_id": "ID_CONSISTENCY",
+    "compliance_status": "HUMAN_REVIEW_REQUIRED",
+    "audit_status": "verified",
+    "escalation_reason": "CONFLICTING_VALUES",
+    "reason": "Potential inconsistency requiring human review: batch_id differs across documents (lab_report_BT-2047.pdf: BT-2047, supplier_declaration_BT-2041.pdf: BT-2041) (rule ID_CONSISTENCY, Demo Buyer Framework v1.0)"
+   }
+  },
+  {
+   "type": "AUDIT_COMPLETED",
+   "agent": "auditor",
+   "message": "Audit complete: 4 verified, 0 uncertain, 2 need human review",
+   "finding_id": null,
+   "document_id": null,
+   "data": {
+    "verified": 4,
+    "uncertain": 0,
+    "needs_review": 2,
+    "reextractions": 0,
+    "conflicts": 1
+   }
+  },
+  {
+   "type": "CORRECTIVE_ACTION_DRAFTED",
+   "agent": "corrective",
+   "message": "Drafted corrective action for CHEM_MAX (English + Roman Urdu). AI draft. Review before sending.",
+   "finding_id": "fnd_8353471a71ca",
+   "document_id": null,
+   "data": {
+    "rule_id": "CHEM_MAX",
+    "label": "AI draft. Review before sending.",
+    "template_fallback": false,
+    "status": "draft"
+   }
+  },
+  {
+   "type": "CORRECTIVE_ACTION_DRAFTED",
+   "agent": "corrective",
+   "message": "Drafted corrective action for ID_CONSISTENCY (English + Roman Urdu). AI draft. Review before sending.",
+   "finding_id": "fnd_ed00e0acfb9b",
+   "document_id": null,
+   "data": {
+    "rule_id": "ID_CONSISTENCY",
+    "label": "AI draft. Review before sending.",
+    "template_fallback": false,
+    "status": "draft"
+   }
+  }
+ ]
+}

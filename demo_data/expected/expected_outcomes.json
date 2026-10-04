@@ -1,0 +1,59 @@
+{
+  "_note": "Hand-specified from the spec (rules v1.0, reference date 2026-09-30). Not produced by running the system.",
+  "clean_supplier": {
+    "workflow_status": "COMPLETED",
+    "findings": {
+      "CHEM_MAX": {
+        "compliance_status": "PASSING_CONFIGURED_CHECK",
+        "audit_status": "verified",
+        "requires_human_review": false
+      },
+      "CERT_REQUIRED": {
+        "compliance_status": "PASSING_CONFIGURED_CHECK",
+        "audit_status": "verified",
+        "requires_human_review": false
+      },
+      "DOC_FRESH": {
+        "compliance_status": "PASSING_CONFIGURED_CHECK",
+        "audit_status": "verified",
+        "requires_human_review": false
+      },
+      "ID_CONSISTENCY": {
+        "compliance_status": "PASSING_CONFIGURED_CHECK",
+        "audit_status": "verified",
+        "requires_human_review": false
+      }
+    }
+  },
+  "failed_supplier": {
+    "workflow_status": "AWAITING_REVIEW",
+    "findings": {
+      "CHEM_MAX": {
+        "compliance_status": "REQUIREMENT_NOT_SATISFIED",
+        "audit_status": "verified",
+        "requires_human_review": true,
+        "corrective_action": true
+      },
+      "CERT_REQUIRED": {
+        "compliance_status": "PASSING_CONFIGURED_CHECK",
+        "audit_status": "verified",
+        "requires_human_review": false
+      },
+      "DOC_FRESH": {
+        "compliance_status": "PASSING_CONFIGURED_CHECK",
+        "audit_status": "verified",
+        "requires_human_review": false
+      },
+      "ID_CONSISTENCY": {
+        "compliance_status": "HUMAN_REVIEW_REQUIRED",
+        "escalation_reason": "CONFLICTING_VALUES",
+        "audit_status": "verified",
+        "requires_human_review": true
+      }
+    }
+  },
+  "failed_supplier_override_CHEM_MAX_limit_20": {
+    "CHEM_MAX": "PASSING_CONFIGURED_CHECK",
+    "ID_CONSISTENCY": "HUMAN_REVIEW_REQUIRED"
+  }
+}

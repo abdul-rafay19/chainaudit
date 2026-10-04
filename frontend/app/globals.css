@@ -1,0 +1,12 @@
+@tailwind base;@tailwind components;@tailwind utilities;
+:root{--paper:#FAFAF8;--card:#FFFFFF;--ink:#0E1116;--mute:#5B6472;--line:#E4E3DD}
+:root[data-theme="dark"]{--paper:#0E1116;--card:#151A21;--ink:#F2F1EC;--mute:#97A0AE;--line:#262D37}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#0E1116;--card:#151A21;--ink:#F2F1EC;--mute:#97A0AE;--line:#262D37}}
+html,body{background:var(--paper);color:var(--ink)}
+body{font-family:var(--font-sans),system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+:focus-visible{outline:2px solid #3B5BDB;outline-offset:2px;border-radius:6px}
+@keyframes ring{0%{box-shadow:0 0 0 0 rgb(214 69 69/.45)}100%{box-shadow:0 0 0 12px rgb(214 69 69/0)}}
+.pulse-bad{animation:ring 1.4s ease-out 2}
+@keyframes sweep{from{transform:translateX(-100%)}to{transform:translateX(100%)}}
+.working::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgb(124 58 237/.12),transparent);animation:sweep 1.4s linear infinite}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}

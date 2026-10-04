@@ -1,0 +1,17 @@
+__pycache__/
+*.pyc
+.venv/
+.env
+.env.local
+.env*.local
+*.db
+*.db-wal
+*.db-shm
+backend/data/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+node_modules/
+.next/
+*.tsbuildinfo
+.vercel/

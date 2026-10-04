@@ -1,0 +1,28 @@
+framework: "Demo Buyer Framework"
+version: "1.0"
+label: "Demo rules. Not the requirements of any real buyer."
+last_reviewed: "2026-10-03"
+reference_date: "2026-09-30"
+min_extraction_confidence: 0.80
+rules:
+  - id: CHEM_MAX
+    title: "Maximum chemical concentration"
+    type: numeric_max
+    field: chemical_ppm
+    limit: 15
+    unit: ppm
+  - id: CERT_REQUIRED
+    title: "Required certification valid on reference date"
+    type: required_certification
+    value: DEMO_CERT_CHEM_L2
+  - id: DOC_FRESH
+    title: "Test report not older than 60 days"
+    type: date_window
+    field: document_date
+    document_types: [lab_report]
+    max_age_days: 60
+    relative_to: reference_date
+  - id: ID_CONSISTENCY
+    title: "Supplier and batch identity consistent across documents"
+    type: consistency
+    fields: [supplier_id, batch_id]
